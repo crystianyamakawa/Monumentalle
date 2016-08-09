@@ -1,0 +1,11 @@
+<h2>Fluxo de Caixa</h2>
+
+<div align="Left">
+      <%= form_tag '', :method => :get do %>
+      <%= "Saldo Mensal em:"%>
+      <%= select_tag :fechamento_caixa_id, options_for_select(@FechamentoCaixa.map {|s| [s.periodo.strftime("%m/%Y"), s.id]}, @fechamento_caixa_id )%>
+      <%= submit_tag 'Filtar Registros' %>
+    <% end %>
+</div>
+
+<%= render "list_movto" %>

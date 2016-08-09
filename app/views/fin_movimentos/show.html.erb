@@ -1,0 +1,78 @@
+<h3>Consulta Movimento Financeiro</h3>
+<p>
+  <strong>Tipo movimento:</strong>
+  <%= @fin_movimento.tp_movimento %>
+</p>
+
+<p>
+  <strong>Descrição:</strong>
+  <%= @fin_movimento.descricao %>
+</p>
+
+<p>
+  <strong>Valor:</strong>
+  <%= @fin_movimento.valor %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @fin_movimento.status %>
+</p>
+
+<p>
+  <strong>Motivo status:</strong>
+  <%= @fin_movimento.motivo_status %>
+</p>
+
+<p>
+  <strong>Data Prevista:</strong>
+  <%= @fin_movimento.dt_previsto %>
+</p>
+
+<p>
+  <strong>Data Executado:</strong>
+  <%= @fin_movimento.dt_executado %>
+</p>
+
+<p>
+  <strong>Contrato:</strong>
+  <%= @fin_movimento.contrato.descricao if @fin_movimento.contrato %>
+</p>
+
+<p>
+  <strong>Despesa:</strong>
+  <%= @fin_movimento.despesa.nome if @fin_movimento.despesa  %>
+</p>
+
+
+<p>
+  <strong>Conta:</strong>
+  <%= FinContum.find(@fin_movimento.fin_conta_id).descricao %>
+</p>
+
+<p>
+  <strong>Obs:</strong>
+  <%= @fin_movimento.obs %>
+</p>
+
+<p>
+  <strong>Criado Por:</strong>
+  <%= @fin_movimento.created_by %>
+</p>
+
+<p>
+  <strong>Criado em:</strong>
+  <%= @fin_movimento.created_at %>
+</p>
+
+<p>
+  <strong>Modificado Por:</strong>
+  <%= @fin_movimento.updated_by %>
+</p>
+<p>
+  <strong>Modificado Em:</strong>
+  <%= @fin_movimento.updated_at %>
+</p>
+
+<%= link_to 'Editar', edit_fin_movimento_path(@fin_movimento) %> |
+<%= link_to 'Voltar', fin_movimentos_path %>

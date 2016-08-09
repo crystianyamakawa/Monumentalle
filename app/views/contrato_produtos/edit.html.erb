@@ -1,0 +1,6 @@
+<h3>Editar Produtos do Contrato</h3>
+
+<%= render 'form' %>
+
+<%= link_to 'Mostrar', @contrato_produto %> |
+<%= link_to 'Voltar', '/contratos/' + @contrato_produto.contrato.id.to_s %>

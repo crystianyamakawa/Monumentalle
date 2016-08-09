@@ -1,0 +1,95 @@
+
+
+    <div class="panel panel-default" >
+        <div class="panel-heading">
+            <i class="fa fa-bar-chart-o fa-fw"></i> Parametros:
+            <div class="pull-right">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                        Actions
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu pull-right" role="menu">
+                        <li><a href="#">Action</a>
+                        </li>
+                        <li><a href="#">Another action</a>
+                        </li>
+                        <li><a href="#">Something else here</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+              <div >
+                <div class = "row">
+                  <div >
+                    <div align="left">
+                        <%= form_tag '', :method => :get do %>
+                          <%= text_field_tag :descricao, nil, :placeholder =>'Informe Descrição...'  %>
+                          <%= select_tag :Tipo_grafico, options_for_select(@lst_graficos),:prompt =>'Tipo de Grafico...'  %>
+                          <%= select_tag :Tipo_group, options_for_select(@lst_group),:prompt =>'Tipo de Agrupameto...'  %>
+                          <%= date_field_tag :periodo %>
+                          <%= submit_tag 'Filtar Registros' %>
+                        <hr>
+                        <% end %>
+                    </div>
+
+                    </div>
+                </div>
+              </div>
+            </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.row -->
+        <div class="panel panel-default" >
+            <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i> Grafico:
+                <div class="pull-right">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                            Actions
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu pull-right" role="menu">
+                            <li><a href="#">Action</a>
+                            </li>
+                            <li><a href="#">Another action</a>
+                            </li>
+                            <li><a href="#">Something else here</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                  <div >
+                    <div class = "row">
+                      <div >
+                        <% if @Tipo_grafico == "Barras"  %>
+                              <%= column_chart @DataSet, xtitle: "Meses" %>
+                        <% elsif  @Tipo_grafico =="Linhas" %>
+                              <!--%= area_chart @DataSet, xtitle: "Meses" %-->
+                              <!--%= line_chart @DataSet.map { |rec|
+                                {name: rec[2] , data: rec[2] rec[1]}} %-->
+                        <% else  %>
+                              <%= pie_chart @DataSet, xtitle: "Meses" %>
+                        <% end  %>
+                          <%= FinMovimento.group(:tp_movimento).sum(:valor) %>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <!-- /.panel-body -->
+        </div>
+      </div>
+  </div>

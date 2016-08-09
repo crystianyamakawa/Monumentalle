@@ -1,0 +1,8 @@
+
+
+
+rails generate scaffold Fornecedor nome:string nr_telefone:string nr_telefone2:string contato:string rua:string nr_endereco:string bairro:string cidade:string cep:string uf:string created_by:string updated_by:string
+
+rails generate scaffold Despesa nome:string fornecedor_id:integer vl_despesa:float status:string obs:text  created_by:string updated_by:string
+
+rails generate scaffold Fechamento_Caixa periodo:date fin_conta_id:integer vl_saldo:float created_by:string updated_by:string

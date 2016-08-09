@@ -1,0 +1,44 @@
+<h3>Lista de Movimentação Financeira</h3>
+<div align="left">
+    <%= form_tag '', :method => :get do %>
+      <%= text_field_tag :descricao, nil, :placeholder =>'Informe Descrição...'  %>
+      <%= select_tag :status, options_for_select(@Status),:prompt =>'Informe Status...'  %>
+      <%= date_field_tag :periodo %>
+      <%= submit_tag 'Filtar Registros' %>
+    <hr>
+    <% end %>
+</div>
+
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Movimento</th>
+      <th>Descrição</th>
+      <th>Valor</th>
+      <th class="text-center">Status</th>
+      <th class="text-center" >Data Previsto</th>
+      <th colspan="3" class="text-center" >Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fin_movimentos.each do |fin_movimento| %>
+      <tr>
+        <td class="text-center"><%= fin_movimento.tp_movimento %></td>
+        <td><%= fin_movimento.descricao %></td>
+        <td class="text-right"><%= fin_movimento.valor %></td>
+        <td class="text-center"><%= fin_movimento.status %></td>
+        <td class="text-center"><%= fin_movimento.dt_previsto.strftime("%d/%m/%Y") %></td>
+        <td><%= link_to 'Mostrar', fin_movimento %></td>
+        <td><%= link_to 'Editar', edit_fin_movimento_path(fin_movimento) %></td>
+        <td><%= link_to 'Eliminar', fin_movimento, method: :delete, data: { confirm: 'Confirma a Exclusão?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<div class="text-center">
+    <%= will_paginate @FinMovimento %>
+</div>
+<%= link_to 'Nova Movimentação Financeira', new_fin_movimento_path %>

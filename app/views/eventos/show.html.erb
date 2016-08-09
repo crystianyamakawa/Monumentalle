@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dt evento:</strong>
+  <%= @evento.dt_evento %>
+</p>
+
+<p>
+  <strong>Dt inicio:</strong>
+  <%= @evento.dt_inicio %>
+</p>
+
+<p>
+  <strong>Dt termino:</strong>
+  <%= @evento.dt_termino %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @evento.created_by %>
+</p>
+
+<p>
+  <strong>Update by:</strong>
+  <%= @evento.update_by %>
+</p>
+
+<p>
+  <strong>Obs:</strong>
+  <%= @evento.obs %>
+</p>
+
+<p>
+  <strong>Tp evento:</strong>
+  <%= @evento.tp_evento %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @evento.status %>
+</p>
+
+<p>
+  <strong>Sinc google:</strong>
+  <%= @evento.sinc_google %>
+</p>
+
+<p>
+  <strong>Dt sinc:</strong>
+  <%= @evento.dt_sinc %>
+</p>
+
+<%= link_to 'Edit', edit_evento_path(@evento) %> |
+<%= link_to 'Back', eventos_path %>

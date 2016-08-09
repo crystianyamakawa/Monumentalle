@@ -1,0 +1,25 @@
+<%#= error_messages_for(@user) %>
+
+<table summary="Informações do Usuário">
+  <tr>
+    <th><%= "Nome" %></th>
+    <td><%= f.text_field(:first_name) %></td>
+  </tr>
+
+  <tr>
+    <th><%= "Sobrenome" %></th>
+    <td><%= f.text_field(:last_name ) %></td>
+  </tr>
+  <tr>
+     <th><%= f.label(:email) %></th>
+     <td><%= f.text_field(:email) %></td>
+  </tr>
+  <tr>
+    <th><%= "Login" %></th>
+    <td><%= f.text_field(:username) %></td>
+  </tr>
+  <tr>
+    <th><%= "Senha" %></th>
+    <td><%= f.text_field(:hashed_password) %></td>
+  </tr>
+</table>

@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @fin_contum.descricao %>
+</p>
+
+<p>
+  <strong>Banco:</strong>
+  <%= @fin_contum.banco %>
+</p>
+
+<p>
+  <strong>Agencia:</strong>
+  <%= @fin_contum.agencia %>
+</p>
+
+<p>
+  <strong>Conta:</strong>
+  <%= @fin_contum.conta %>
+</p>
+
+<p>
+  <strong>Saldo:</strong>
+  <%= @fin_contum.saldo %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @fin_contum.status %>
+</p>
+
+<p>
+  <strong>Obs:</strong>
+  <%= @fin_contum.obs %>
+</p>
+
+<p>
+  <strong>Criado Por:</strong>
+  <%= @fin_contum.created_by %>
+</p>
+<p>
+  <strong>Criado Em:</strong>
+  <%= @fin_contum.created_at %>
+</p>
+<p>
+  <strong>Modificado Por:</strong>
+  <%= @fin_contum.updated_by %>
+</p>
+
+<p>
+  <strong>Modificado Em:</strong>
+  <%= @fin_contum.updated_at %>
+</p>
+
+<%= link_to 'Editar', edit_fin_contum_path(@fin_contum) %> |
+<%= link_to 'Voltar', '/fin_conta' %>

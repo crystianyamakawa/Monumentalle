@@ -1,0 +1,64 @@
+<%= form_for(@fin_movimento) do |f| %>
+  <% if @fin_movimento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fin_movimento.errors.count, "error") %> prohibited this fin_movimento from being saved:</h2>
+
+      <ul>
+      <% @fin_movimento.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= "Movimento" %><br>
+    <%= f.select :tp_movimento, ["Entrada","Saida"]  %>
+  </div>
+  <div class="field">
+    <%= "Descrição" %><br>
+    <%= f.text_field :descricao, size: 60 %>
+  </div>
+  <div class="field">
+    <%= "Valor" %><br>
+    <%= f.text_field :valor %>
+  </div>
+  <div class="field">
+    <%= "Status" %><br>
+    <%= f.select(:status, @Status) %>
+
+  </div>
+  <div class="field">
+    <%= "Motivo Status" %><br>
+    <%= f.text_field :motivo_status %>
+  </div>
+  <div class="field">
+    <%= "Data Prevista" %><br>
+    <%= f.date_select :dt_previsto, :order => [:day, :month, :year]  %>
+  </div>
+  <div class="field">
+    <%= "Data Executado" %><br>
+    <!--%= f.date_select :dt_executado, :order => [:day, :month, :year] %-->
+  </div>
+  <div class="field">
+    <%= "Contrato" %><br>
+    <%= f.number_field :contrato_id %>
+  </div>
+
+  <div class="field">
+    <%= "Despesa" %><br>
+    <%= f.text_field :despesa_id %>
+  </div>
+  <div class="field">
+    <%= "Conta Bancária" %><br>
+    <%= f.number_field :fin_conta_id %>
+  </div>
+  <div class="field">
+    <%= "Obs" %><br>
+    <%= f.text_area :obs%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

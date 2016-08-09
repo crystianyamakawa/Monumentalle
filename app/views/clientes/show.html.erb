@@ -1,0 +1,170 @@
+<h3>Consulta de Cliente</h3><br>
+<p id="notice"><%= notice %></p>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <!--Dados do Cliente content-->
+
+      <div class="table-responsive">
+      <table class = "table table-bordered">
+        <tr>
+          <td colspan="2"><strong>Nome:</strong></td>
+          <td colspan="10" class="text-left"> <%= @cliente.nome %></td>
+        </tr>
+        <tr>
+            <td colspan="2"><strong>Dt Nascimento:</strong></td>
+            <td colspan="10" class="text-left"><%= @cliente.dt_nascimento.strftime("%d/%m/%Y") %></td>
+        </tr>
+        <tr>
+          <td colspan="2"><strong>Tp Documento:</strong></td>
+          <td class="text-left"><%= @cliente.tp_documento %></td>
+          <td colspan="2"><strong>Nr Documento:</strong></td>
+          <td colspan="10" class="text-left"><%= @cliente.nr_documento %></td>
+        <tr>
+        <tr>
+            <td colspan="2"><strong>Nr CPF/CNPJ:</strong></td>
+            <td colspan="10" class="text-left"><%= @cliente.nr_cpf_cnpj %></td>
+        </tr>
+        <tr>
+              <td colspan="2"><strong>Rua:</strong></td>
+              <td class="text-left"><%= @cliente.rua %></td>
+              <td colspan="2"><strong>Numero:</strong></td>
+              <td colspan="10" class="text-left"><%=  @cliente.numero  %></td>
+        </tr>
+          <tr>
+                <td colspan="2"><strong>Compl:</strong></td>
+                <td class="text-left"><%=@cliente.complemento %></td>
+                <td colspan="2"><strong>Bairro:</strong></td>
+                <td colspan="10" class="text-left"><%= @cliente.bairro %></td>
+          </tr>
+            <tr>
+                  <td colspan="2"><strong>Cep:</strong></td>
+                  <td class="text-left"><%= @cliente.cep %></td>
+                  <td colspan="2"><strong>Cidade:</strong></td>
+                  <td class="text-left"><%= @cliente.cidade %></td>
+                  <td colspan="2"><strong>UF:</strong></td>
+                  <td class="text-left"><%= @cliente.uf %></td>
+            </tr>
+            <tr>
+                  <td colspan="2"><strong>OBS:</strong></td>
+                  <td colspan="10" class="text-left"><%=@cliente.obs %></td>
+
+            </tr>
+      </table >
+    </div >
+      <!-- <p>
+        <strong>Nome:</strong>
+        <%= @cliente.nome %>
+      </p>
+
+      <p>
+        <strong>Dt Nascimento:</strong>
+        <%= @cliente.dt_nascimento %>
+      </p>
+
+      <p>
+        <strong>Nr Documento:</strong>
+        <%= @cliente.nr_documento %>
+      </p>
+
+      <p>
+        <strong>Tp Documento:</strong>
+        <%= @cliente.tp_documento %>
+      </p>
+
+      <p>
+        <strong>Nr CPF/CNPJ:</strong>
+        <%= @cliente.nr_cpf_cnpj %>
+      </p>
+
+      <p>
+        <strong>Rua:</strong>
+        <%= @cliente.rua %>
+      </p>
+
+      <p>
+        <strong>Numero:</strong>
+        <%= @cliente.numero %>
+      </p>
+
+      <p>
+        <strong>Bairro:</strong>
+        <%= @cliente.bairro %>
+      </p>
+
+      <p>
+        <strong>Cidade:</strong>
+        <%= @cliente.cidade %>
+      </p>
+
+      <p>
+        <strong>Uf:</strong>
+        <%= @cliente.uf %>
+      </p>
+
+      <p>
+        <strong>Cep:</strong>
+        <%= @cliente.cep %>
+      </p>
+
+      <p>
+        <strong>Obs:</strong>
+        <%= @cliente.obs %>
+      </p>
+
+      <p>
+        <strong>Criado Por:</strong>
+        <%= @cliente.created_by %>
+      </p>
+
+      <p>
+        <strong>Atualizado Por:</strong>
+        <%= @cliente.updated_by %>
+      </p> -->
+
+    </div>
+    <br>
+    <%= link_to 'Editar', edit_cliente_path(@cliente) %> |
+    <%= link_to 'Voltar', clientes_path %>
+    <!-- <a href=<%= edit_cliente_path(@cliente) %> class="btn btn-primary btn-large">
+    Editar
+    </a> -->
+
+  </div>
+</div>
+
+ <hr>
+
+
+<div class="span10">
+  <!--Body content-->
+  <h3>Contratos Relacionados</h3><br>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Tipo Evento</th>
+        <th>Descricao</th>
+        <th>Dt Evento</th>
+        <th>Obs</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @contratos.each do |contrato| %>
+        <tr>
+          <td><%= contrato.tp_evento %></td>
+          <td><%= contrato.descricao %></td>
+          <td><%= contrato.dt_evento.strftime("%d/%m/%Y") %></td>
+          <td><%= contrato.obs %></td>
+          <td><%= link_to 'Show', contrato %></td>
+          <td><%= link_to 'Editar', edit_contrato_path(contrato) %></td>
+          <td><%= link_to 'Eliminar', contrato, method: :delete, data: { confirm: 'Confirma Exclusão?' } %></td>
+        </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+</div>

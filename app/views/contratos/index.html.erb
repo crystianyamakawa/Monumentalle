@@ -1,0 +1,46 @@
+<h2>Lista de  Contratos</h2>
+
+<div align="left">
+    <%= form_tag '', :method => :get do %>
+      <%= text_field_tag :descricao, nil, :placeholder =>'Informe Descrição...'  %>
+      <%= select_tag :status, options_for_select(@status),:prompt =>'Informe Status...'  %>
+      <%= date_field_tag :dt_evento, :placeholder =>'Data Evento...' %>
+      <%= submit_tag 'Filtar Registros' %>
+    <% end %>
+   <hr>
+</div>
+
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Tipo Evento</th>
+      <th>Descricao</th>
+      <th>Cliente</th>
+      <th class="text-center">Data Evento</th>
+      <th class="text-center">Status</th>
+      <th colspan="3">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contratos.each do |contrato| %>
+      <tr>
+        <td><%= contrato.tp_evento %></td>
+        <td><%= contrato.descricao %></td>
+        <td><%= "#{contrato.cliente.nome}" if contrato.cliente %></td>
+        <td class="text-center"><%= contrato.dt_evento.strftime("%d/%m/%Y") %></td>
+        <td class="text-center"><%= contrato.status %></td>
+        <td><%= link_to 'Mostrar', contrato %></td>
+        <td><%= link_to 'Editar', edit_contrato_path(contrato) %></td>
+        <td><%= link_to 'Eliminar', contrato, method: :delete, data: { confirm: 'Confirma a Exclusão?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<div class="text-center">
+    <%= will_paginate @contratos %>
+</div>
+<%= link_to 'Novo Contrato', new_contrato_path %>
+<!--p id="notice"><%= notice %></p>

@@ -1,0 +1,62 @@
+<p>
+  <strong>Nome:</strong>
+  <%= @fornecedor.nome %>
+</p>
+
+<p>
+  <strong>Telefone:</strong>
+  <%= @fornecedor.nr_telefone %>
+</p>
+
+<p>
+  <strong>Telefone 2:</strong>
+  <%= @fornecedor.nr_telefone2 %>
+</p>
+
+<p>
+  <strong>Contato:</strong>
+  <%= @fornecedor.contato %>
+</p>
+
+<p>
+  <strong>Rua:</strong>
+  <%= @fornecedor.rua %>
+</p>
+
+<p>
+  <strong>Nr endereco:</strong>
+  <%= @fornecedor.nr_endereco %>
+</p>
+
+<p>
+  <strong>Bairro:</strong>
+  <%= @fornecedor.bairro %>
+</p>
+
+<p>
+  <strong>Cidade:</strong>
+  <%= @fornecedor.cidade %>
+</p>
+
+<p>
+  <strong>Cep:</strong>
+  <%= @fornecedor.cep %>
+</p>
+
+<p>
+  <strong>Uf:</strong>
+  <%= @fornecedor.uf %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @fornecedor.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @fornecedor.updated_by %>
+</p>
+
+<%= link_to 'Editar', edit_fornecedor_path(@fornecedor) %> |
+<%= link_to 'Voltar', fornecedors_path %>

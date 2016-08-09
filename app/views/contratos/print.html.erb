@@ -1,0 +1,151 @@
+<h3 class="center">INSTRUMENTO PARTICULAR DE</h3>
+<h3 class="center">CONTRATO DE LOCAÇÃO</h3>
+<h3 class="center">MONUMENTALLE - ESTAÇÃO DE EVENTOS</h3>
+<br>
+<p class="text-justify">Pelo presente instrumento particular de um lado, MONUMENTALLE - ESTAÇÃO DE EVENTOS,
+   sediada à BR 376, Km 110, na cidade de Paranavaí, Estado do Paraná, inscrita no CNPJ
+   sob o n.17.940.724/0001-18, representada por Cíntia Daniella Nascimento Lopes da Silva,
+   portadora do RG n. 6622553-4 e inscrita no CPF sob o n. 995156109 82,
+   doravante denominada LOCADORA e de outro lado, <strong><%= @cliente.nome %></strong>,
+   portador(a) do <strong><%= @cliente.tp_documento %></strong> n. <strong><%= @cliente.nr_documento %></strong>,
+   inscrito no CPF/CNPJ sob o n. <strong><%= @cliente.nr_cpf_cnpj %></strong>,
+   residente e domiciliado à  <strong><%= @cliente.rua %></strong> n. <strong><%= @cliente.numero %></strong>,
+   na cidade de <strong><%= @cliente.cidade %></strong>–<strong><%= @cliente.uf %></strong>,
+   doravante denominada LOCATÁRIO(A) celebram este contrato, que regerá pelo disposto no Código
+   Civil Brasileiro e pelas cláusulas e condições seguintes:
+</p>
+<br>
+<h4>CLÁUSULA PRIMEIRA: DO OBJETO E PRAZO DA CONTRATAÇÃO</h4>
+<p class="text-justify">  1.	O presente ajuste tem por objeto a LOCAÇÃO temporária do(s) espaço(s) e equipamento(s)  abaixo:
+</p>
+<div class="center">
+<table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>ESPAÇOS</th>
+      <th class="text-center">QTD</th>
+      <th class="text-center">ENTRADA</th>
+      <th class="text-center">SAÍDA</th>
+    </tr>
+  </thead>
+
+  <% @contrato_produtos.each do |contrato_produto| %>
+    <tr>
+      <td><%= contrato_produto.produto.descricao %></td>
+      <td class="text-center"><%= contrato_produto.quantidade %></td>
+      <td class="text-center"><%= contrato_produto.dt_inicio.strftime("%d/%m/%Y - %H:%M")  if contrato_produto.dt_inicio %></td>
+      <td class="text-center"><%=  contrato_produto.dt_termino.strftime("%d/%m/%Y - %H:%M") if contrato_produto.dt_termino %></td>
+    </tr>
+   <% end %>
+</table>
+</div>
+
+
+<p class="text-justify">
+  bem como seus utensílios ao (a) Locatário (a) no período compreendido entre às
+  17 horas do dia <%= @contrato.dt_evento.strftime("%d/%m/%Y") %>, até às 6 horas do dia <%= (@contrato.dt_evento + 1.day).strftime("%d/%m/%Y") %> para a realização de
+  Recepção para Casamento.  O Locatário (a) poderá no dia <%= @contrato.dt_evento.strftime("%d/%m/%Y") %> às 10 horas iniciar os
+  preparativos de decoração no salão de festas e espaço ao ar livre.
+</p>
+
+
+<br><br>
+<h4>CLÁUSULA SEGUNDA: DO VALOR DA LOCAÇÃO</h4>
+<p class="text-justify">
+  2.	Pela locação ora ajustada o (a) LOCATÁRIO (A) pagará à LOCADORA, à vista a importância de R$ <%= @contrato.vl_negociado %>
+   (<%= @contrato.vl_extenso %>).
+</p>
+<br>
+</br>
+<h4>CLÁUSULA TERCEIRA: DAS OBRIGAÇÕES DOS CONTRATANTES</h4>
+<p class="text-justify">
+  3.	Constituem-se Obrigações e Responsabilidades da LOCADORA:
+3.1 Colocar à disposição do LOCATÁRIO (A), até às 10 horas do dia 22/02/2014 as seguintes dependências, equipamentos e utensílios, limpos e em condições de uso:
+a) salão de festas para 414 pessoas sentadas, podendo este número ser estimado até 982 pessoas considerando o público em pé, segundo Memorial de Cálculo das Saídas de Emergência, aprovado pelo Corpo de Bombeiro. Cozinha, espaço de churrasqueira do salão e banheiros para convidados (masculino e feminino). Bar, Palco e camarins para bandas ou realizações de cerimônias. Vestiários, masculino e feminino para garçons.
+b) 2,  climatizadores;
+c) saguão de embarque e desembarque dos convidados, bem como hall de entrada;
+b) uma unidade de fornecimento de energia trifásica de 200 amperes, sendo 100 amperes exclusivos do palco e os outros 100 amperes para o restante do salão;
+b)  3 freezers;
+3.2 São Obrigações e Responsabilidades do LOCATÁRIO:
+a) Usar com zelo as dependências bem como todos os equipamentos e outros materiais colocados à sua disposição, sem qualquer dano;
+b) Implementar os banheiros com papel toalha e papel higiênico, bem como zeladores;
+c) Não utilizar nem permitir o acesso aos demais espaços físicos a não ser os destinados ao evento, quais sejam: estacionamento e salão de festas;
+d) Deixar caução de R$ 800,00 (Oitocentos Reais) para ressarcimento de eventuais danos causados ao espaço físico, bem como, o imediato pagamento por extravios ou avarias de utensílios e equipamentos da LOCADORA;
+e) No máximo um dia após a festa, todos os pertences que não forem da LOCADORA deverão ser retirados, sob pena de multa diária de R$ 100,00 (cem Reais), salvo locação seguida. A Locadora solicitará o salão desocupado, assim que encerrada a festa;
+f) Contratar no mínimo três profissionais da área de segurança para cada cem convidados;
+g) Responsabilizar-se junto com Buffet contratado, pela qualidade da alimentação que será servida, assim como a devida higiene e limpeza da área de serviço, utilizada pelo Buffet no momento da realização do evento. O Buffet deverá separar o lixo e colocá-los adequadamente nas lixeiras respectivas, nas instalações do MONUMENTALLE – ESTAÇÃO DE EVENTOS. Desta maneira, o lixo sendo separado e depositado adequadamente nas respectivas lixeiras (orgânico, papel, plástico, metal) pelo Buffet, a Locatária estará isenta de quaisquer taxas referente ao resíduo (lixo);
+h) O (A) LOCATÁRIO (A) arcará com o pagamento de todos os impostos e taxas, seja de qualquer natureza, que incidam ou venham a incidir sobre o evento a ser realizado. Inclusive pela taxa pelo recolhimento da taxa musical dos direitos autorais (ECAD) lei federal n.9.610/98, para eventos com banda musical ou som mecânico (Djs) e apresentar ao MONUMENTALLE – ESTAÇÃO DE EVENTOS, antes do início do evento.
+
+i)	Cumprir o horário estabelecido na Cláusula Primeira, sob pena de pagar o valor locativo.
+
+j) Deve ser feito uma vistoria da dependência dos equipamentos e dos utensílios do local com 24 horas de antecedência ao período alugado. A vistoria deve ser comprovada mediante documentação assinada pelo Locatário e por um funcionário designado pelo MONUMENTALLE - ESTAÇÃO DE EVENTOS.
+</p>
+<br>
+<br>
+<h4>CLÁUSULA QUARTA – RESPONSABILIDADE CÍVEL E CRIMINAL</h4>
+<p class="text-justify">
+4.	O(A) LOCATÁRIO (A) responderá civil e criminalmente por todo e qualquer ato e fato ocorrido nas dependências do MONUMENTALLE - ESTAÇÃO DE EVENTOS em razão do evento.
+<strong>
+PARÁGRAFO ÚNICO: Não será permitida a realização de pirofagia, show pirotécnico indoors, ou qualquer apresentação que envolva fogo ou líquidos inflamáveis dentro do salão, ou por qualquer profissional contratado pelo evento.
+</strong>
+</p>
+<br><br>
+<h4>CLÁUSULA QUINTA – DISPOSIÇÕES GERAIS</h4>
+<p class="text-justify">
+5.	O MONUMENTALLE – ESTAÇÃO DE EVENTOS não se responsabiliza objetivamente por eventuais danos ou furtos a veículos ou objetos no interior destes que se encontrem em suas dependências. O MONUMENTALLE – ESTAÇÃO DE EVENTOS poderá entrar com ação de regresso contra o locatário caso seja questionado por algum dos casos citados.
+</p>
+<br><br>
+<h4>CLÁUSULA SEXTA – DA VIGÊNCIA E DA DENÚNCIA</h4>
+<p class="text-justify">
+6.	Este instrumento entra em vigor na data de assinatura do mesmo. O presente contrato poderá ser rescindido, por qualquer das partes mediante comunicação escrita de uma parte a outra, com até 120 dias de antecedência ao evento. Neste caso, a parte que der causa a rescisão ficará obrigada a indenizar a outra em 50% do valor total do contrato. Caso a rescisão se dê com prazo inferior, fica a parte rescindenda obrigada a indenizar a outra no valor total deste contrato.
+
+PARÁGRAFO ÚNICO: Na eventualidade de ocorrência de motivo de força maior, tais como: fenômenos naturais, falecimentos de pessoas que inviabilizem a realização do evento na data contratada, poderão as partes transferir a data da realização do evento para qualquer outro dia, mês, desde que dentro da disponibilidade da agenda do salão, não implicando assim em nenhum ônus a qualquer das partes.
+</p>
+<br>
+<br>
+<h4>CLÁUSULA SÉTIMA – DO FORO</h4>
+<p class="text-justify">
+7.	Elegem os (as) CONTRATANTES o foro da Comarca de Paranavaí-PR para dirimir quaisquer dúvidas decorrentes do presente contrato.
+
+E, por estarem justos (as) e contratados (as), firmam o presente instrumento em duas vias de igual teor e forma, perante as testemunhas que se seguem, a tudo presentes.
+</p>
+<br>
+<br>
+<p >
+  Paranavaí, ____de___________ de _______.
+</p>
+<br>
+<p class="text-right">
+  _______________________________________________________________________LOCADOR
+</p>
+<br>
+<br>
+
+<p class="text-right">
+  _____________________________________________________________________LOCATÁRIO
+</p>
+
+<br>
+<br>
+
+<p class="text-right">
+
+TESTEMUNHA
+CPF_________________________
+</p>
+<br>
+<p class="text-right">
+___________________________________________________________________
+</p>
+<br>
+
+<p class="text-right">
+
+TESTEMUNHA
+CPF_________________________
+</p>
+<br>
+<p class="text-right">
+_____________________________________________________________________
+
+</p>

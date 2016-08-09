@@ -1,0 +1,59 @@
+<%= form_for(@despesa) do |f| %>
+  <% if @despesa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@despesa.errors.count, "error") %> prohibited this despesa from being saved:</h2>
+
+      <ul>
+      <% @despesa.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+      <%= f.label "Fornecedor" %><br>
+      <%= f.select(:fornecedor_id, @fornecedores.map {|s| [s.nome, s.id]} ) %>
+  </div>
+
+  <div class="field">
+      <%= f.label "Tp Despesa'" %><br>
+      <%= f.select(:tp_despesa, @tpDespesa ) %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Descrição" %><br>
+    <%= f.text_field :nome, :size => 60 %>
+  </div>
+  <div class="field">
+    <%= f.label "Valor Despesa" %><br>
+    <%= f.text_field :vl_despesa %>
+  </div>
+  <div class="field">
+      <%= f.label "Contrato Origem'" %><br>
+      <%= f.select(:contrato_id, @contratos.map {|s| [s.descricao , s.id]}, :include_blank => true ) %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.select(:status, @Status )  %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Data Executado" %><br>
+    <%= f.date_select :dt_executado, :include_blank =>true  %>
+  </div>
+  <div class="field">
+    <%= f.label "Valor Executado" %><br>
+    <%= f.text_field :vl_executado %>
+  </div>
+
+  <div class="field">
+    <%= f.label :obs %><br>
+    <%= f.text_area :obs %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

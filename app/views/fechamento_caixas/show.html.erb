@@ -1,0 +1,39 @@
+<h3>Consultar Saldo Mensal</h3>
+
+<p>
+  <strong>Periodo:</strong>
+  <%= @fechamento_caixa.periodo.strftime("%m/%Y") %>
+</p>
+
+<p>
+  <strong>Conta:</strong>
+  <%= FinContum.find(@fechamento_caixa.fin_conta_id).descricao %>
+</p>
+
+<p>
+  <strong>Saldo:</strong>
+  <%= @fechamento_caixa.vl_saldo %>
+</p>
+
+<p>
+  <strong>Criado por:</strong>
+  <%= @fechamento_caixa.created_by %>
+</p>
+
+<p>
+  <strong>Criado em:</strong>
+  <%= @fechamento_caixa.created_at.strftime("%d/%m/%Y %H:%M") %>
+</p>
+
+<p>
+  <strong>Atualizado por:</strong>
+  <%= @fechamento_caixa.updated_by %>
+</p>
+
+<p>
+  <strong>Atualizado em:</strong>
+  <%= @fechamento_caixa.updated_at.strftime("%d/%m/%Y %H:%M") %>
+</p>
+
+<%= link_to 'Editar', edit_fechamento_caixa_path(@fechamento_caixa) %> |
+<%= link_to 'Voltar', fechamento_caixas_path %>

@@ -1,0 +1,36 @@
+<h3>Lista de Fornecedores</h3>
+
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Telefone</th>
+      <th>Telefone 2</th>
+      <th>Contato</th>
+      <th>Rua</th>
+      <th>Numero</th>
+      <th colspan="3">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fornecedors.each do |fornecedor| %>
+      <tr>
+        <td><%= fornecedor.nome %></td>
+        <td><%= fornecedor.nr_telefone %></td>
+        <td><%= fornecedor.nr_telefone2 %></td>
+        <td><%= fornecedor.contato %></td>
+        <td><%= fornecedor.rua %></td>
+        <td><%= fornecedor.nr_endereco %></td>
+        <td><%= link_to 'Mostrar', fornecedor %></td>
+        <td><%= link_to 'Editar', edit_fornecedor_path(fornecedor) %></td>
+        <td><%= link_to 'Eliminar', fornecedor, method: :delete, data: { confirm: 'Confirma a Exclusão?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<%= link_to 'Novo Fornecedor', new_fornecedor_path %>

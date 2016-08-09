@@ -1,0 +1,46 @@
+<%= form_for(@fin_contum) do |f| %>
+  <% if @fin_contum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fin_contum.errors.count, "error") %> prohibited this fin_contum from being saved:</h2>
+
+      <ul>
+      <% @fin_contum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%="Descrição" %><br>
+    <%= f.text_field :descricao %>
+  </div>
+  <div class="field">
+    <%= "Banco" %><br>
+    <%= f.text_field :banco %>
+  </div>
+  <div class="field">
+    <%= "Agencia" %><br>
+    <%= f.text_field :agencia %>
+  </div>
+  <div class="field">
+    <%= "Conta" %><br>
+    <%= f.text_field :conta %>
+  </div>
+  <div class="field">
+    <%= "Saldo" %><br>
+    <%= f.text_field :saldo %>
+  </div>
+  <div class="field">
+    <%= "Status" %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= "Obs" %><br>
+    <%= f.text_area :obs %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Cria/Atualizar Conta" %>
+  </div>
+<% end %>

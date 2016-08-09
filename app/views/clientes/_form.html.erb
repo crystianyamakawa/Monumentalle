@@ -1,0 +1,54 @@
+<%= form_for(@cliente) do |f| %>
+  <div class="table-responsive">
+  <table class="table table-striped">
+    <tr>
+      <td colspan="2"><strong>Nome:</strong></td>
+      <td colspan="10" class="text-left"> <%= f.text_field( :nome, size: 58) %></td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Dt Nascimento:</strong></td>
+        <td colspan="10" class="text-left"><%= f.date_field(:dt_nascimento,  :order => [:day, :month, :year])  %></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Tp Documento:</strong></td>
+      <td class="text-left"><%= f.select(:tp_documento, ["RG","CERT. NASCIMENTO","PASSAPORT"]) %></td>
+      <td colspan="2"><strong>Nr Documento:</strong></td>
+      <td class="text-left"><%= f.text_field :nr_documento %></td>
+    <tr>
+    <tr>
+        <td colspan="2"><strong>Nr CPF/CNPJ:</strong></td>
+        <td class="text-left"><%= f.text_field :nr_cpf_cnpj %></td>
+    </tr>
+    <tr>
+          <td colspan="2"><strong>Rua:</strong></td>
+          <td class="text-left"><%= f.text_field :rua %></td>
+          <td colspan="2"><strong>Numero:</strong></td>
+          <td class="text-left"><%=  f.text_field :numero  %></td>
+    </tr>
+      <tr>
+            <td colspan="2"><strong>Compl:</strong></td>
+            <td class="text-left"><%=f.text_field :complemento %></td>
+            <td colspan="2"><strong>Bairro:</strong></td>
+            <td class="text-left"><%= f.text_field :bairro %></td>
+      </tr>
+        <tr>
+              <td colspan="2"><strong>Cep:</strong></td>
+              <td class="text-left"><%=f.text_field :cep %></td>
+              <td colspan="2"><strong>Cidade:</strong></td>
+              <td class="text-left"><%= f.text_field :cidade %></td>
+              <td colspan="2"><strong>UF:</strong></td>
+              <td class="text-left"><%= f.select(:uf, ["PR","SC","SP"]) %></td>
+        </tr>
+        <tr>
+              <td colspan="2"><strong>OBS:</strong></td>
+              <td colspan="10" class="text-left"><%=f.text_field( :obs, size: 58 ) %></td>
+
+        </tr>
+  </table >
+</div >
+
+  <br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

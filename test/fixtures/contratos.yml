@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  descricao: MyString
+  dt_evento: 2015-09-29
+  obs: MyText
+  created_by: MyString
+  updated_by: MyString
+  scale: 
+
+two:
+  descricao: MyString
+  dt_evento: 2015-09-29
+  obs: MyText
+  created_by: MyString
+  updated_by: MyString
+  scale: 

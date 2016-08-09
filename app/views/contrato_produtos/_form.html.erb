@@ -1,0 +1,46 @@
+<%= form_for(@contrato_produto) do |f| %>
+  <% if @contrato_produto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contrato_produto.errors.count, "error") %> prohibited this contrato_produto from being saved:</h2>
+
+      <ul>
+      <% @contrato_produto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= "Contrato" %><br>
+    <%= f.select(:contrato_id, @contratos.map {|s| [s.descricao, s.id]}) %>
+  </div>
+  <div class="field">
+    <%= "Produto" %><br>
+    <%= f.select(:produto_id, @produtos.map {|s| [s.descricao, s.id]}) %>
+  </div>
+  <div class="field">
+    <%= "Quantidade" %><br>
+    <%= f.number_field :quantidade %>
+  </div>
+  <div class="field">
+    <%= "Valor Tabela" %><br>
+    <%= f.text_field :vl_tabela %>
+  </div>
+  <div class="field">
+    <%= "Valor Negociado" %><br>
+    <%= f.text_field :vl_negociado %>
+  </div>
+  <div class="field">
+    <%= "Inicio" %><br>
+    <%= f.datetime_select :dt_inicio,  :order => [:day, :month, :year, :hour, :minute]   %>
+  </div>
+  <div class="field">
+    <%= "Termino" %><br>
+    <%= f.datetime_select :dt_termino,  :order => [:day, :month, :year, :hour, :minute] %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

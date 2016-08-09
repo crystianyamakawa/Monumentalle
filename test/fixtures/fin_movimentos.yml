@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tp_movimento: MyString
+  descricao: MyString
+  valor: 1.5
+  status: MyString
+  motivo_status: MyString
+  dt_previsto: 2015-10-01
+  dt_executado: MyString
+  tp_origem: MyString
+  origem_id: 1
+  conta_id: 1
+  obs: MyText
+  created_by: MyString
+  updated_by: MyString
+
+two:
+  tp_movimento: MyString
+  descricao: MyString
+  valor: 1.5
+  status: MyString
+  motivo_status: MyString
+  dt_previsto: 2015-10-01
+  dt_executado: MyString
+  tp_origem: MyString
+  origem_id: 1
+  conta_id: 1
+  obs: MyText
+  created_by: MyString
+  updated_by: MyString

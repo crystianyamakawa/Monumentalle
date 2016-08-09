@@ -1,0 +1,70 @@
+
+<div class="table-responsive">
+<table class="table">
+  <thead>
+    <tr>
+
+      <th class="text-center">Data Previsto</th>
+      <th>Movimento</th>
+      <th>Descrição</th>
+      <th class="text-right">Valor</th>
+      <th class="text-center">Status</th>
+      <th colspan="2" class="text-center" >Ações</th>
+      <th class="text-right">Saldo</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td class="text-center"><strong><%= @dt_fechamento.try(:strftime,"%d/%m/%Y") %> </strong></td>
+      <td></td>
+      <td><strong><%= "Fechamento Mensal" %></strong></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="text-right"><strong><%= @vl_saldo %></strong></td>
+    </tr>
+
+    <% @fin_movimentos.each do |fin_movimento| %>
+    <% if (fin_movimento.tp_movimento == "Entrada") && (fin_movimento.dt_previsto <= Date.today) %>
+      <tr class="alert alert-info">
+    <% elsif (fin_movimento.tp_movimento == "Saida") && (fin_movimento.dt_previsto <= Date.today) %>
+      <tr class="alert alert-danger">
+    <% else %>
+          <tr class="alert alert-warning fade in">
+    <% end %>
+        <% @vl_saldo = @vl_saldo +  fin_movimento.valor %>
+        <td class="text-center"><%= fin_movimento.dt_previsto.strftime("%d/%m/%Y") %></td>
+        <td class="text-center"><%= fin_movimento.tp_movimento %></td>
+        <td><%= fin_movimento.descricao %></td>
+        <td class="text-right"><%= fin_movimento.valor %></td>
+        <td class="text-center"><%= fin_movimento.status %></td>
+        <td><%= link_to 'Editar', edit_fin_movimento_path(fin_movimento), :target =>"_blank" %></td>
+        <!--td data-toggle="tooltip" data-placement="top" title="Realizar Movimento" >
+          <button type="button" id ="btnGerar" onclick=realizar_movimento('<%= fin_movimento.id %>')
+                >✓</button></td>
+        -->
+        <td data-toggle="tooltip" data-placement="top" title="Realizar Movimento" >
+                <%= link_to '✓', 'realizar_movimento',id: fin_movimento.id %></td>
+
+
+        <td class="text-right"><%= @vl_saldo %></td>
+
+      </tr>
+    <% end %>
+
+    <td></td>
+    <td></td>
+    <td><strong><%= "Saldo Final" %></strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td class="text-right"><strong><%= @vl_saldo %></strong></td>
+
+  </tbody>
+</table>
+</div>
+<br>

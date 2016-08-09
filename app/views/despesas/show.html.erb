@@ -1,0 +1,135 @@
+<h3>Consulta Despesa
+  <div class="btn-group pull-right">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Ações  <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'Editar Despesa', edit_despesa_path(@despesa) %></li>
+      <li><a data-toggle="modal" data-target="#finModal">Gerar Contas a Pagar</a></li>
+      <li role="separator" class="divider"></li>
+      <li><%= link_to 'Voltar Lista Despesas', despesas_path %></li>
+      </ul>
+  </div>
+</h3>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tr>
+      <td><strong>Fornecedor:</strong> </td>
+      <td colspan="12"><%= Fornecedor.find(@despesa.fornecedor_id).nome %> </td>
+    </tr>
+    <tr>
+      <td><strong>Descrição:</strong> </td>
+      <td><%= @despesa.nome %> </td>
+    </tr>
+
+    <tr>
+      <td><strong>Status:</strong></td>
+      <td>  <%= @despesa.status %></td>
+      <td><strong>Valor Despesa:</strong></td>
+      <td><%= @despesa.vl_despesa %></td>
+    </tr>
+    <tr>
+      <td><strong>Criado por:</strong></td>
+      <td><%= @despesa.created_by %></td>
+      <td><strong>Atualizado por:</strong></td>
+      <td><%= @despesa.updated_by %></td>
+
+    </tr>
+    <tr>
+      <td><strong>Criado em:</strong></td>
+      <td><%= @despesa.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+      <td><strong>Atualizado em:</strong></td>
+      <td><%= @despesa.updated_at.strftime("%d/%m/%Y %H:%M") %></td>
+
+    </tr>
+
+    <tr>
+      <td><strong>Obs:</strong></td>
+      <td colspan="12"><%= @despesa.obs %></td>
+    </tr>
+  </table>
+</div>
+
+
+<!-- ########################################## -->
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#financeiro" role="tab" data-toggle="tab">Movimentação Financeira</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="financeiro">
+      <%= render(:partial => "financeiro", :locals => {:despesa => @despesa}) %> 
+  </div>
+</div>
+
+
+<!-- ###################################################################### -->
+<!-- Modal Financeiro -->
+<div class="modal fade" id="finModal" tabindex="-1" role="dialog" aria-labelledby="Gerar Movimentação Financeira">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cancelar"><span aria-hidden="true">&times;</span></button>
+         <h4 class="modal-title" id="exampleModalLabel">Gerar Movimentação Financeira</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <table>
+              <tr>
+                <td><label for="recipient-name" class="control-label">Forma de Pagamento:</label>
+                </td>
+                <td><select class="form-control" id="sel1">
+                    <option>Boleto</option>
+                    <option>Cheque</option>
+                    <option>Dinheiro</option>
+                </select>
+                </td>
+              </tr>
+              <tr>
+
+                <td><label for="recipient-name" class="control-label">Conta Bancária:</label>
+                </td>
+                <td><select class="form-control" id="fin_conta">
+                    <option>SICREDI</option>
+                    <!-- <option>Dinheiro</option> -->
+                </select>
+                </td>
+            </tr>
+              <tr>
+                <td><label for="recipient-name" class="control-label">Numero de Parcelas:</label>
+                </td>
+                <td><input type="text" class="form-control" id="nr_parcela"></td>
+              </tr>
+              <tr>
+                <td><label for="recipient-name" class="control-label">Valor das Parcelas:</label>
+                </td>
+                <td><input type="text" class="form-control" id="vl_parcela"></td>
+              </tr>
+              <tr>
+                <td><label for="recipient-name" class="control-label">Data Inicio:</label>
+                </td>
+                <td><input type="dateSelect" class="form-control" id="dt_inicio"></td>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="recipient-name" class="control-label">Despesa:</label>
+                </td>
+                <td><input type="text" class="form-control" aria-hidden="true" id="despesa_id" value = <%= @despesa.id %>>
+                </td>
+              </tr>
+          </table>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" id ="btnGerar" class="btn btn-primary" onclick="gerar_despesas();"
+                data-dismiss="modal">Gerar Financeiro</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ###################################################################### -->

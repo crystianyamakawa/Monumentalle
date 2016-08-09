@@ -1,0 +1,29 @@
+<h3>Saldo Mensal</h3>
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Periodo</th>
+      <th>Conta</th>
+      <th>Saldo</th>
+      <th colspan="3">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fechamento_caixas.each do |fechamento_caixa| %>
+      <tr>
+        <td><%= fechamento_caixa.periodo.strftime("%m/%Y") %></td>
+        <td><%= FinContum.find(fechamento_caixa.fin_conta_id).descricao %></td>
+        <td><%= fechamento_caixa.vl_saldo %></td>
+        <td><%= link_to 'Mostrar', fechamento_caixa %></td>
+        <td><%= link_to 'Editar', edit_fechamento_caixa_path(fechamento_caixa) %></td>
+        <td><%= link_to 'Eliminar', fechamento_caixa, method: :delete, data: { confirm: 'Confirma a Exclusão?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<%= link_to 'Novo Saldo Mensal', new_fechamento_caixa_path %>

@@ -1,0 +1,57 @@
+<%= form_for(@evento) do |f| %>
+  <% if @evento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@evento.errors.count, "error") %> prohibited this evento from being saved:</h2>
+
+      <ul>
+      <% @evento.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :dt_evento %><br>
+    <%= f.date_select :dt_evento %>
+  </div>
+  <div class="field">
+    <%= f.label :dt_inicio %><br>
+    <%= f.datetime_select :dt_inicio %>
+  </div>
+  <div class="field">
+    <%= f.label :dt_termino %><br>
+    <%= f.datetime_select :dt_termino %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :update_by %><br>
+    <%= f.text_field :update_by %>
+  </div>
+  <div class="field">
+    <%= f.label :obs %><br>
+    <%= f.text_area :obs %>
+  </div>
+  <div class="field">
+    <%= f.label :tp_evento %><br>
+    <%= f.text_field :tp_evento %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :sinc_google %><br>
+    <%= f.number_field :sinc_google %>
+  </div>
+  <div class="field">
+    <%= f.label :dt_sinc %><br>
+    <%= f.datetime_select :dt_sinc %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

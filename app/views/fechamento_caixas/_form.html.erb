@@ -1,0 +1,37 @@
+<%= form_for(@fechamento_caixa) do |f| %>
+  <% if @fechamento_caixa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fechamento_caixa.errors.count, "error") %> prohibited this fechamento_caixa from being saved:</h2>
+
+      <ul>
+      <% @fechamento_caixa.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :periodo %><br>
+    <%= f.date_select :periodo, :discard_day => true %>
+  </div>
+  <div class="field">
+    <%= f.label :fin_conta_id %><br>
+    <%= f.select( :fin_conta_id,@contas.map {|s| [s.descricao, s.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :vl_saldo %><br>
+    <%= f.text_field :vl_saldo %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_by %><br>
+    <%= f.text_field :updated_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

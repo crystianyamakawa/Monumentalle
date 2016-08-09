@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cadastro de Produto</h1>
+<br>
+<p>
+  <strong>Descricao:</strong>
+  <%= @produto.descricao %>
+</p>
+
+<p>
+  <strong>Valor:</strong>
+  <%= @produto.valor %>
+</p>
+
+<p>
+  <strong>Obs:</strong>
+  <%= @produto.obs %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @produto.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @produto.updated_by %>
+</p>
+
+<br>
+<%= link_to 'Editar', edit_produto_path(@produto) %> |
+<%= link_to 'Voltar', produtos_path %>

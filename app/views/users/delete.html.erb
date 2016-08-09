@@ -1,0 +1,12 @@
+<%= link_to("<< Voltar", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="Admin User delete">
+  <%= form_for(:user, :url => {:action => 'destroy', :id => @user.id}) do |f| %>
+    <p>Confirma a exclusão permanente deste usuário? </p>
+    <p class="reference-name"><%= @user.name %></p>
+    <div class="form-buttons">
+      <%= submit_tag("Delete User") %>
+    </div>
+
+    <% end %>
+</div>

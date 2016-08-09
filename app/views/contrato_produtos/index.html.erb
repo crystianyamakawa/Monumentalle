@@ -1,0 +1,33 @@
+
+
+<h1>Lista de Produtos do Contrato</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Contrato</th>
+      <th>Produto</th>
+      <th>Quantidade</th>
+      <th>Valor Negociado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contrato_produtos.each do |contrato_produto| %>
+      <tr>
+        <td><%= contrato_produto.contrato.descricao %></td>
+        <td><%= contrato_produto.produto.descricao %></td>
+        <td><%= contrato_produto.quantidade %></td>
+        <td><%= contrato_produto.vl_negociado %></td>
+        <td><%= link_to 'Mostrar', contrato_produto %></td>
+        <td><%= link_to 'Editar', edit_contrato_produto_path(contrato_produto) %></td>
+        <td><%= link_to 'Eliminar', contrato_produto, method: :delete, data: { confirm: 'Confirma a Exclusão?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'Novo Produto do Contrato', new_contrato_produto_path %>
+
+<p id="notice"><%= notice %></p>

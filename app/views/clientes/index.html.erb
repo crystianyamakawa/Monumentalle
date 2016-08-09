@@ -1,0 +1,44 @@
+<h2>Lista de Clientes</h2>
+<div align="left">
+    <%= form_tag '', :method => :get do %>
+      <%= text_field_tag :nome, nil, :placeholder =>'Informe Nome...'  %>
+      <%= text_field_tag :cpf_cnpj, nil, :placeholder =>'Informe CPF/CNPJ...'%>
+      <%= submit_tag 'Filtar Registros' %>
+    <% end %>
+    <hr>
+</div>
+
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th class="text-center">Documento</th>
+      <th class="text-center">CPF/CNPJ</th>
+      <th class="text-center">Telefone</th>
+      <th colspan="3" class="text-center">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clientes.each do |cliente| %>
+      <tr>
+        <td><%= cliente.nome %></td>
+        <td class="text-center"><%= cliente.nr_documento %></td>
+        <td class="text-center"><%= cliente.nr_cpf_cnpj %></td>
+        <td><%= cliente.nr_telefone %></td>
+
+        <td><%= link_to 'Mostrar', cliente %></td>
+        <td><%= link_to 'Editar', edit_cliente_path(cliente) %></td>
+        <td><%= link_to 'Eliminar', cliente, method: :delete, data: { confirm: 'Confirma Exclusão?' } %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
+</div>
+<%= link_to 'Novo Cliente', new_cliente_path %>
+
+<div class="text-center">
+    <%= will_paginate @clientes %>
+</div>

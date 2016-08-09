@@ -1,0 +1,12 @@
+
+<ul>
+  <li>Contratos</li>
+  <li>Eventos</li>
+  <li>Adminstrativo
+      <ul>
+        <li><%= link_to("Usuários",{:controller => 'users',:action => 'index'})%></li>
+        <li><%= link_to("Financeiro", :action => "users#index")%></li>
+        <li><%= link_to("Apuracao", :action => "users#index")%></li>
+      </ul>
+  </li>
+</ul>

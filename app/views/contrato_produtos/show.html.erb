@@ -1,0 +1,39 @@
+<h3>Produto do Contato</h3>
+<p>
+  <strong>Contrato:</strong>
+  <%= @contrato_produto.contrato.descricao %>
+</p>
+
+<p>
+  <strong>Produto:</strong>
+  <%= @contrato_produto.produto.descricao %>
+</p>
+
+<p>
+  <strong>Quantidade:</strong>
+  <%= @contrato_produto.quantidade %>
+</p>
+
+<p>
+  <strong>Valor Tabela:</strong>
+  <%= @contrato_produto.vl_tabela %>
+</p>
+
+<p>
+  <strong>Valor Negociado:</strong>
+  <%= @contrato_produto.vl_negociado %>
+</p>
+
+<p>
+  <strong>Criado Por:</strong>
+  <%= @contrato_produto.created_by %>
+</p>
+
+<p>
+  <strong>Modificado Por:</strong>
+  <%= @contrato_produto.updated_by %>
+</p>
+
+<br>
+<%= link_to 'Editar', edit_contrato_produto_path(@contrato_produto) %> |
+<%= link_to 'Voltar', '/contratos/' + @contrato_produto.contrato.id.to_s %>
